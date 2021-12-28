@@ -1,5 +1,8 @@
 require 'ruby2d'
+
 class Ball
+  attr_accessor :radius, :speed_x, :speed_y, :circle
+
   def initialize
     @radius = rand(5..30)
     initial_x = rand(@radius...Window.width-@radius)
@@ -7,7 +10,7 @@ class Ball
     @circle = Circle.new(
       x: initial_x, y: initial_y,
       radius: @radius,
-      color: 'random'
+      color: 'green'
     )
 
     @speed_x = rand(2)
@@ -22,28 +25,20 @@ class Ball
     @circle.y
   end
 
-  def move!
-    calculate_wall_collisions
+  def color
+    circle.color
+  end
+
+  def ==(other)
+    x == other.x && y == other.y
+  end
+
+
+
+
+  def update_position
     @circle.x += @speed_x
     @circle.y += @speed_y
   end
 
-  def calculate_wall_collisions
-    #right wall
-    if (x + @radius) == Window.width
-      @speed_x *= -1
-    end
-    # left wall
-    if (x - @radius) == 0
-      @speed_x *= -1
-    end
-    # upper wall
-    if (y - @radius) == 0
-      @speed_y *= -1
-    end
-    # bottom wall
-    if (y + @radius) == Window.height
-      @speed_y *= -1
-    end
-  end
 end
