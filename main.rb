@@ -1,18 +1,21 @@
 require 'ruby2d'
 require 'pry'
+require './ball'
 
 set({ 
   title: "Elastic Collisions", 
   width: 800,
-  height: 600
+  height: 600,
+  background: 'white'
 })
 
-Circle.new(
-  x: rand(Window.width), y: rand(Window.height),
-  radius: 20,
-  sectors: 32,
-  color: 'red',
-  z: 10
-)
+balls = []
+20.times do
+  balls << Ball.new
+end
+
+update do 
+  balls.each(&:move!)
+end
 
 show
