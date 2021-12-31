@@ -4,8 +4,8 @@ class Ball
   attr_accessor :radius, :speed_x, :speed_y, :circle, :mass
 
   def initialize
-    @radius = rand(15..35)
-    @mass = @radius # All balls have the same density
+    @radius = rand(20..35)
+    @mass = @radius**2 # All balls have the same density
     initial_x = rand(@radius...Window.width-@radius)
     initial_y = rand(@radius...Window.height-@radius)
     @circle = Circle.new(
@@ -14,8 +14,8 @@ class Ball
       color: 'green'
     )
 
-    @speed_x = rand(2)
-    @speed_y = rand(2)
+    @speed_x = rand(3)
+    @speed_y = rand(3)
   end
 
   def x

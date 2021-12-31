@@ -10,7 +10,7 @@ set({
 })
 
 @balls = []
-20.times do
+15.times do
   @balls << Ball.new
 end
 
