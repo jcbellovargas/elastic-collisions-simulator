@@ -1,10 +1,11 @@
 require 'ruby2d'
 
 class Ball
-  attr_accessor :radius, :speed_x, :speed_y, :circle
+  attr_accessor :radius, :speed_x, :speed_y, :circle, :mass
 
   def initialize
-    @radius = rand(5..30)
+    @radius = rand(15..35)
+    @mass = @radius # All balls have the same density
     initial_x = rand(@radius...Window.width-@radius)
     initial_y = rand(@radius...Window.height-@radius)
     @circle = Circle.new(
@@ -33,12 +34,19 @@ class Ball
     x == other.x && y == other.y
   end
 
-
-
-
-  def update_position
+  def move
     @circle.x += @speed_x
     @circle.y += @speed_y
+  end
+
+  def update_position(x,y)
+    @circle.x = x
+    @circle.y = y
+  end
+
+  def update_speed(sx,sy)
+    @speed_x = sx
+    @speed_y = sy
   end
 
 end
