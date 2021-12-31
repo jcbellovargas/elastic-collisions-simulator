@@ -105,26 +105,6 @@ def calculate_wall_collisions(ball)
   end
 end
 
-# def calculate_wall_collisions(ball)
-#   #right wall
-#   if (ball.x + ball.radius) == Window.width
-#     ball.speed_x *= -1
-#   end
-#   # left wall
-#   if (ball.x - ball.radius) == 0
-#     ball.speed_x *= -1
-#   end
-#   # upper wall
-#   if (ball.y - ball.radius) == 0
-#     ball.speed_y *= -1
-#   end
-#   # bottom wall
-#   if (ball.y + ball.radius) == Window.height
-#     ball.speed_y *= -1
-#   end
-# end
-
-
 update do 
   @balls.each { |ball| move_ball(ball) }
 end
